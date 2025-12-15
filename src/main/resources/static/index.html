@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>사과게임 - 합 10</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="wrap">
+    <header class="header">
+        <h1>사과게임 (직사각형 합=10)</h1>
+        <div class="meta">
+            <div>남은 시간: <span id="timer">02:00</span></div>
+            <div>점수: <span id="score">0</span></div>
+            <div>선택 합: <span id="sum">-</span></div>
+            <div>선택 칸수: <span id="count">-</span></div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="board">
+            <canvas id="game"></canvas>
+
+            <div class="hint">
+                <div class="hint-title">조작</div>
+                <ul>
+                    <li><b>시작</b>을 누르면 3초 뒤 게임 시작</li>
+                    <li>마우스 드래그로 <b>직사각형 영역</b> 선택</li>
+                    <li>클릭은 <b>1칸 선택</b></li>
+                    <li>선택 영역의 합이 <b>정확히 10</b>이면 해당 칸들이 <b>사라짐(빈칸 유지)</b></li>
+                    <li>2분이 지나면 <b>더 이상 격자를 수정할 수 없음</b></li>
+                </ul>
+            </div>
+        </section>
+
+        <aside class="side">
+            <button id="start">시작</button>
+            <button id="restart">다시 시작</button>
+
+            <div class="panel">
+                <div class="panel-title">상태</div>
+                <div class="panel-body">
+                    <div id="status">대기중</div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-title">규칙</div>
+                <div class="panel-body">
+                    <div>직사각형 선택 → 합이 <b>10</b>이면 삭제</div>
+                    <div>중력/새 숫자 보충 <b>없음</b></div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-title">점수</div>
+                <div class="panel-body">
+                    <div>삭제한(0이 아닌) 칸수 × 10</div>
+                </div>
+            </div>
+        </aside>
+    </main>
+</div>
+
+<script src="/js/game.js"></script>
+</body>
+</html>
