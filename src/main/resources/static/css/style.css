@@ -54,6 +54,9 @@ h1 {
     background: #111526;
     box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
     border: 1px solid rgba(255, 255, 255, .08);
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .right {
