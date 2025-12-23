@@ -1,8 +1,8 @@
 import * as utils from "./util.js";
 import * as logic from "./logic.js";
 
-export const COLS = 5;
-export const ROWS = 5;
+export const COLS = 17;
+export const ROWS = 10;
 export const CELL = 52;
 export const PAD = 18;
 

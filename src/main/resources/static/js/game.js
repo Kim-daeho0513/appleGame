@@ -2,12 +2,12 @@ import * as draws from './draw.js';
 import * as logic from './logic.js';
 
 (() => {
-    const leftTime = 20; // 2분
+    const leftTime = 120; // 2분
     const countTime = 3; //3초 카운트
     let board = null;
     let score = 0;
-    let timeLeft = 30;
-    let countdownLeft = 3;
+    let timeLeft = leftTime;
+    let countdownLeft = countTime;
     let phase = "idle";
     let isDragging = false;
     let dragStart = null, dragEnd = null;
@@ -20,18 +20,22 @@ import * as logic from './logic.js';
             draws.draw({ board, phase, dragRect, highlightMask: endedHighlightMask, countdownLeft });
         });
     }
-
+    //게임 초기화(다시하기 버튼)
     function resetGame() {
-        clearInterval(timerInterval);
-        clearInterval(countdownInterval);
-        score = 0; timeLeft = leftTime; phase = "idle"; board = null; endedHighlightMask = null;
+        clearInterval(timerInterval); //게임시간 인터벌 초기화
+        clearInterval(countdownInterval); // 카운트 다운 인터벌 초기화
+        score = 0; //  점수 초기화
+        timeLeft = leftTime; // 게임시간 초기화
+        phase = "idle"; // 대기 상태
+        board = null; // 점수 계산용 보드 초기화
+        endedHighlightMask = null; // 끝나고 하이라이트 나오는 부분 초기화
         draws.updateHUD(score, timeLeft);
         draws.setPhaseUI(phase);
         requestDraw();
     }
-
+    // 게임시작 (시작 버튼)
     function startGame() {
-        phase = "countdown";
+        phase = "countdown"; // 카운트 다운 상태
         countdownLeft = countTime;  //3초 카운트 초기화
 
         draws.setPhaseUI(phase);
@@ -40,18 +44,18 @@ import * as logic from './logic.js';
             if (countdownLeft <= 0) {
                 clearInterval(countdownInterval);
                 board = logic.createValidBoard();
-                phase = "running";
+                phase = "running"; // 게임 시작
                 startTimer();
             }
             requestDraw();
         }, 1000);
     }
-
+    // 게임 시작 버트
     function startTimer() {
         timerInterval = setInterval(() => {
             timeLeft--;
             if (timeLeft <= 0) {
-                phase = "ended";
+                phase = "ended";    // 게임 종료 단계
                 endedHighlightMask = logic.computeEndedHighlightMask(board);
                 clearInterval(timerInterval);
                 timeLeft = leftTime;    //2분 초기화
@@ -61,14 +65,15 @@ import * as logic from './logic.js';
             requestDraw();
         }, 1000);
     }
-
+    // 클릭 누르고 있을 때 이벤트
     draws.canvas.addEventListener("pointerdown", (e) => {
         if (phase !== "running") return;
         dragStart = dragEnd = draws.cellFromEvent(e);
         if (dragStart) { isDragging = true; requestDraw(); }
     });
-
+    // 마우스 이동 이벤트
     draws.canvas.addEventListener("pointermove", (e) => {
+        //
         if (!isDragging) return;
         const cell = draws.cellFromEvent(e);
         if (cell) {
