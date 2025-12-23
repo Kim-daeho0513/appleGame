@@ -205,6 +205,7 @@ draws.inputModeBtn.addEventListener("click", () => {
     function init() {
         draws.updateThemeUI(isDarkMode);
         draws.updateInputModeUI(inputMode);
+        requestDraw();
     }
     // --- 테마 및 모드 토글 이벤트 ---
     draws.themeModeBtn.addEventListener("click", () => {

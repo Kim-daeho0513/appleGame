@@ -20,8 +20,8 @@ body {
 
 /* 클래스 기반 강제 테마 적용 */
 body.dark-mode {
-    background-color: #121212;
-    color: #e8eaed;
+    background-color: rgba(18, 18, 18, 0.78);
+    color: #dddddd;
 }
 
 body.dark-mode .toggle-btn {
@@ -105,8 +105,9 @@ button:hover {
 .panel {
     padding: 12px 14px;
     border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, .10);
-    background: #303134;
+    border: 1px solid #dadce0;
+    background: #f1f3f4;
+    color: #3c4043;
 }
 
 .panel .title {
@@ -115,11 +116,23 @@ button:hover {
     margin-bottom: 8px;
 }
 
+body.dark-mode .panel {
+    background: #303134;
+    border-color: #5f6368;
+    color: #e8eaed;
+}
+
 .hint {
     padding: 12px 14px;
     border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, .10);
-    background: rgba(255, 255, 255, .04);
+    border: 1px solid #dadce0;
+    background: #f1f3f4;
+}
+
+body.dark-mode .hint {
+    background: #303134;
+    border-color: #5f6368;
+    color: #e8eaed;
 }
 
 .hint ul {
