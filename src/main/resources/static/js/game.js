@@ -39,6 +39,7 @@ import * as logic from './logic.js';
         countdownLeft = countTime;  //3초 카운트 초기화
 
         draws.setPhaseUI(phase);
+        requestDraw(); // [수정] 3을 먼저 화면에 그립니다.
         countdownInterval = setInterval(() => {
             countdownLeft--;
             if (countdownLeft <= 0) {
