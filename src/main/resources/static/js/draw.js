@@ -155,7 +155,7 @@ export function draw(state) {
         const h = (dragRect.r2 - dragRect.r1 + 1) * CELL - 8;
         
         // 드래그 영역 색상 (성공/진행중 대비 강화)
-        const strokeColor = ok ? "#1030b5" : "#d5c429";
+        const strokeColor = ok ? "#2563EB" : "#EAB308";
         roundRect(x, y, w, h, 14, "rgba(0,0,0,0.02)", strokeColor);
     }
 
