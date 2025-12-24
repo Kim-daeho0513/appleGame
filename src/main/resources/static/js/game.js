@@ -131,7 +131,7 @@ draws.inputModeBtn.addEventListener("click", () => {
                     board[r][c] = 0;
                 }
             }
-            score += nonZeroCount * 10;
+            score += nonZeroCount;
             // 맵에 더 이상 합 10이 없으면 보드 재생성
             if (!logics.hasAnyRectSum10(board)) {
                 board = logics.createValidBoard();
@@ -182,14 +182,10 @@ draws.inputModeBtn.addEventListener("click", () => {
         if (inputMode === "drag" && isDragging) {
             if (cell) {
                 dragEnd = cell;
-                draws.setSelectionHUD(logics.sumAndCountInRect(board, draws.rectFromDrag(dragStart, dragEnd)));
                 requestDraw();
             }
         } else if (inputMode === "click" && firstClick) {
             dragEnd = cell; // 가이드라인용 마우스 위치 업데이트
-            if (cell) {
-                draws.setSelectionHUD(logics.sumAndCountInRect(board, draws.rectFromDrag(firstClick, cell)));
-            }
             requestDraw();
         }
     });

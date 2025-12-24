@@ -9,8 +9,7 @@ export const PAD = 18;
 export const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 const scoreEl = document.getElementById("score");
-const sumEl = document.getElementById("sum");
-const countEl = document.getElementById("count");
+
 const timerEl = document.getElementById("timer");
 const statusEl = document.getElementById("status");
 export const startBtn = document.getElementById("start");
@@ -58,16 +57,6 @@ canvas.style.touchAction = "none";
 export function updateHUD(score, timeLeft) {
     scoreEl.textContent = String(score);
     timerEl.textContent = utils.formatMMSS(timeLeft);
-}
-
-export function setSelectionHUD(info) {
-    if (!info) {
-        sumEl.textContent = "-";
-        countEl.textContent = "-";
-        return;
-    }
-    sumEl.textContent = String(info.sum);
-    countEl.textContent = String(info.nonZeroCount);
 }
 
 export function setPhaseUI(phase) {
