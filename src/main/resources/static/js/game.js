@@ -69,7 +69,6 @@ draws.inputModeBtn.addEventListener("click", () => {
         dragStart = null;
         dragEnd = null;
         firstClick = null;
-        draws.setSelectionHUD(null);
         requestDraw();
     }
 
