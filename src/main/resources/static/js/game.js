@@ -76,6 +76,7 @@ draws.inputModeBtn.addEventListener("click", () => {
         clearInterval(timerInterval);
         clearInterval(countdownInterval);
         score = 0;
+        countdownLeft = countTime;
         timeLeft = leftTime;
         phase = "idle";
         board = null;
@@ -88,10 +89,10 @@ draws.inputModeBtn.addEventListener("click", () => {
 
     function startGame() {
         if (phase === "running" || phase === "countdown") return;
-        
+        resetGame()
         resetSelection();
         phase = "countdown";
-        countdownLeft = countTime;
+        draws.updateHUD(score, timeLeft);
         draws.setPhaseUI(phase);
         requestDraw();
 
@@ -102,6 +103,8 @@ draws.inputModeBtn.addEventListener("click", () => {
                 board = logics.createValidBoard();
                 phase = "running";
                 startTimer();
+                requestDraw();
+                return;
             }
             requestDraw();
         }, 1000);
